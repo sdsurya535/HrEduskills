@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+
+.karla-<uniquifier > {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+/* Make the navbar sticky */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50; /* Ensure it is above other elements */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-scrolled {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Change to the color you prefer */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+.bg-image {
+  background-image: url("../../assets/business.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  width: 100%;
+  position: relative;
+}
+
+.bg-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 1;
+}
+
+.bg-image > * {
+  position: relative;
+  z-index: 2;
+}
+
+.banner-content {
+  text-align: center;
+  padding: 0 1rem;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+.banner-content h1,
+.banner-content h2 {
+  margin: 0.5rem 0;
+  animation: fadeInUp 2s forwards;
+}
+
+.banner-content a {
+  margin-top: 1rem;
+  display: inline-block;
+  animation: fadeInUp 2s forwards;
+}
+
+.logo-animate {
+  animation: logoBounce 2s infinite;
+}
+
+.menu-animate {
+  animation: fadeIn 0.5s forwards;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.btn-animate {
+  transition: transform 0.3s ease;
+}
+
+.btn-animate:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-animate {
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .menu-animate.block {
+    max-height: 500px; /* Adjust according to your content size */
+  }
+
+  .banner-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .banner-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .banner-content a {
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-content h1 {
+    font-size: 2rem;
+  }
+
+  .banner-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .banner-content a {
+    padding: 0.5rem 1rem;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutLeft {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.5s forwards;
+  }
+
+  .slide-out-left {
+    animation: slideOutLeft 0.5s forwards;
+  }
+}

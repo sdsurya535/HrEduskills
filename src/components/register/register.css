@@ -1,0 +1,29 @@
+.animate-slide-left {
+  animation: slide-left 1s forwards;
+}
+
+.animate-slide-right {
+  animation: slide-right 1s forwards;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

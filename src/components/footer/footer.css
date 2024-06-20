@@ -1,0 +1,12 @@
+.footer-main {
+  background-image: url("../../assets/bg-footer.jpg");
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  min-height: 60vh; /* Changed from height to min-height */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center; /* Center content vertically */
+  padding: 20px;
+}
