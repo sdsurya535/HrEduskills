@@ -99,7 +99,7 @@ const SpeakerCard = ({ speaker }) => {
         alt={speaker.name}
         className="z-0 h-full mx-auto w-full rounded-md object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-800 opacity-60 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-800 opacity-90 to-transparent"></div>
       <div className="absolute bottom-4 left-4 text-left">
         <h1 className="text-lg font-semibold text-white">{speaker.name}</h1>
         <p className="mt-2 text-sm font-bold text-gray-100">

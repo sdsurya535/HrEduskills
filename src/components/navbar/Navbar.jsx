@@ -39,10 +39,10 @@ const Navbar = () => {
       <div id="home">
         <div className="bg-image animate-bg-fade ">
           <nav
-            className={`bg-white border-gray-200 dark:bg-gray-900 transition-all duration-100 mx-auto ${
+            className={`bg-white border-gray-200 dark:bg-gray-900 mx-auto ${
               isScrolled
-                ? "fixed transition-all z-[50] top-0 w-full left-0 right-0"
-                : " mx-auto max-w-screen-xl"
+                ? "fixed transition-all duration-300 z-[50] top-0 w-full left-0 right-0 navbar-scrolled"
+                : "mx-auto max-w-screen-xl"
             }`}
           >
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">

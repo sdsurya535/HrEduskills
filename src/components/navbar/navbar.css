@@ -31,6 +31,23 @@ html {
 }
 
 /* navbar.css */
+.bg-white {
+  transition: all 0.3s ease-in-out;
+}
+
+.bg-gray-900 {
+  transition: all 0.3s ease-in-out;
+}
+
+.fixed {
+  transition: top 0.3s ease-in-out;
+}
+
+.navbar-scrolled {
+  top: 0;
+}
+
+/* navbar.css */
 .active {
   color: #007bff; /* Example: change the text color for active state */
   font-weight: bold; /* Example: make the active menu item bold */
