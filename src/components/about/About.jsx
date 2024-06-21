@@ -1,6 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import aboutimg from "../../assets/pngwing.png";
+import aboutimg from "../../assets/speaker.jpg";
+import campaign from "../../assets/campaign.jpg";
+import osborn from "../../assets/osborn.jpg";
+import "./about.css";
+
 
 const About = () => {
   return (
@@ -8,12 +12,14 @@ const About = () => {
       <div className="about-sec bg-[#fff6f6] px-4 md:px-16" id="about">
         <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row lg:justify-between">
           <motion.div
-            className="image-sec mt-8 mb-5 md:mt-16 lg:mt-16"
+            className="image-sec mt-8 mb-10 md:mt-16 lg:pr-[15px] lg:mt-16"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-            <img src={aboutimg} className="md:mx-auto lg:w-[560px]" alt="" />
+            <img src={aboutimg} className="md:mx-auto border-[20px] border-white rounded-full  lg:w-[560px]" alt="" />
+            {/* <img src={campaign} className="campaigns md:mx-auto border-[20px] border-white rounded-full" alt="" />
+            <img src={osborn} className="campaign md:mx-auto border-[20px] border-white rounded-full " alt="" /> */}
           </motion.div>
           <motion.div
             className="about-content px-4 md:px-6 lg:px-0  lg:w-[50%] mt-8 lg:mt-16 md:mt-16"

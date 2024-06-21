@@ -30,11 +30,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* navbar.css */
+.active {
+  color: #007bff; /* Example: change the text color for active state */
+  font-weight: bold; /* Example: make the active menu item bold */
+}
+
 .bg-image {
   background-image: url("../../assets/business.jpg") !important;
   background-size: cover;
   background-position: center;
-  height: 80vh;
   width: 100%;
   position: relative;
 }

@@ -1,0 +1,22 @@
+.awards-sec {
+  background-image: url("../../assets/statistics-bg.jpg") !important;
+  background-position: center;
+  background-size: cover;
+  
+  position: relative;
+}
+
+.awards-sec::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: linear-gradient(
+    272deg,
+    rgba(37, 72, 255, 0.8) 0%,
+    rgba(32, 205, 255, 0.8) 100%
+  );
+  z-index: 1;
+}

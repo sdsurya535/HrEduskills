@@ -1,11 +1,19 @@
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
-// import team from "../../assets/teams.jpg";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
 import mainteam from "../../assets/mainteam.jpg";
 
 export default function Register() {
   const [selectedAward, setSelectedAward] = useState("");
   const [fileInputs, setFileInputs] = useState([]);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    
+  } = useForm();
 
   const handleAwardChange = (event) => {
     const award = event.target.value;
@@ -21,9 +29,19 @@ export default function Register() {
     setFileInputs(Array(numberOfFiles).fill(null));
   };
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
-    <section>
-      <div className="grid grid-cols-1 lg:grid-cols-2 mt-10">
+    <section id="registration">
+      <motion.div
+        className="grid grid-cols-1 max-w-screen-xl mx-auto lg:grid-cols-2 mt-10"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
         <div className="relative flex items-end px-4 pb-10 pt-60 sm:px-6 sm:pb-16 md:justify-center lg:px-8 lg:pb-24">
           <div className="absolute inset-0">
             <img
@@ -36,7 +54,7 @@ export default function Register() {
           <div className="relative">
             <div className="w-full max-w-xl xl:mx-auto xl:w-full xl:max-w-xl xl:pr-24">
               <h3 className="text-4xl font-bold text-white">
-                Now you dont have to rely on your designer to create a new page
+                Now you don't have to rely on your designer to create a new page
               </h3>
               <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
                 <li className="flex items-center space-x-3">
@@ -55,8 +73,7 @@ export default function Register() {
                     </svg>
                   </div>
                   <span className="text-lg font-medium text-white">
-                    {" "}
-                    Commercial License{" "}
+                    Commercial License
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
@@ -75,8 +92,7 @@ export default function Register() {
                     </svg>
                   </div>
                   <span className="text-lg font-medium text-white">
-                    {" "}
-                    Unlimited Exports{" "}
+                    Unlimited Exports
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
@@ -95,8 +111,7 @@ export default function Register() {
                     </svg>
                   </div>
                   <span className="text-lg font-medium text-white">
-                    {" "}
-                    120+ Coded Blocks{" "}
+                    120+ Coded Blocks
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
@@ -115,8 +130,7 @@ export default function Register() {
                     </svg>
                   </div>
                   <span className="text-lg font-medium text-white">
-                    {" "}
-                    Design Files Included{" "}
+                    Design Files Included
                   </span>
                 </li>
               </ul>
@@ -124,37 +138,41 @@ export default function Register() {
           </div>
         </div>
         <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-          <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
+          <motion.div
+            className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
-              Sign up
+              REGISTER
             </h2>
-            <p className="mt-2 text-base text-gray-600">
-              Already have an account?{" "}
-              <a
-                href="#"
-                title=""
-                className="font-medium text-black transition-all duration-200 hover:underline"
-              >
-                Sign In
-              </a>
-            </p>
-            <form action="#" method="POST" className="mt-8">
+            <p className="mt-2 text-base text-gray-600"></p>
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
               <div className="space-y-5">
                 <div>
                   <label
                     htmlFor="name"
                     className="text-base font-medium text-gray-900"
                   >
-                    {" "}
-                    Full Name{" "}
+                    Full Name
                   </label>
                   <div className="mt-2">
                     <input
+                      {...register("name", {
+                        required: "Full Name is required",
+                      })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="text"
                       placeholder="Full Name"
                       id="name"
-                    ></input>
+                    />
+                    {errors.name && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.name.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -162,16 +180,27 @@ export default function Register() {
                     htmlFor="email"
                     className="text-base font-medium text-gray-900"
                   >
-                    {" "}
-                    Email address{" "}
+                    Email address
                   </label>
                   <div className="mt-2">
                     <input
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: {
+                          value: /^\S+@\S+$/i,
+                          message: "Enter a valid email address",
+                        },
+                      })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
                       id="email"
-                    ></input>
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -180,17 +209,29 @@ export default function Register() {
                       htmlFor="password"
                       className="text-base font-medium text-gray-900"
                     >
-                      {" "}
-                      Password{" "}
+                      Password
                     </label>
                   </div>
                   <div className="mt-2">
                     <input
+                      {...register("password", {
+                        required: "Password is required",
+                        minLength: {
+                          value: 8,
+                          message:
+                            "Password must be at least 8 characters long",
+                        },
+                      })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
                       placeholder="Password"
                       id="password"
-                    ></input>
+                    />
+                    {errors.password && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.password.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -199,17 +240,28 @@ export default function Register() {
                       htmlFor="phone"
                       className="text-base font-medium text-gray-900"
                     >
-                      {" "}
-                      Mobile Number{" "}
+                      Mobile Number
                     </label>
                   </div>
                   <div className="mt-2">
                     <input
+                      {...register("phone", {
+                        required: "Mobile Number is required",
+                        pattern: {
+                          value: /^[0-9]{10}$/,
+                          message: "Enter a valid 10-digit mobile number",
+                        },
+                      })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="text"
                       placeholder="mobile number"
                       id="phone"
-                    ></input>
+                    />
+                    {errors.phone && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -218,17 +270,24 @@ export default function Register() {
                       htmlFor="company"
                       className="text-base font-medium text-gray-900"
                     >
-                      {" "}
-                      Company{" "}
+                      Company
                     </label>
                   </div>
                   <div className="mt-2">
                     <input
+                      {...register("company", {
+                        required: "Company is required",
+                      })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="text"
                       placeholder="company"
                       id="company"
-                    ></input>
+                    />
+                    {errors.company && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.company.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -237,17 +296,24 @@ export default function Register() {
                       htmlFor="designation"
                       className="text-base font-medium text-gray-900"
                     >
-                      {" "}
-                      Designation{" "}
+                      Designation
                     </label>
                   </div>
                   <div className="mt-2">
                     <input
+                      {...register("designation", {
+                        required: "Designation is required",
+                      })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="text"
                       placeholder="designation"
                       id="designation"
-                    ></input>
+                    />
+                    {errors.designation && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.designation.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -255,11 +321,13 @@ export default function Register() {
                     htmlFor="award"
                     className="text-base font-medium text-gray-900"
                   >
-                    {" "}
-                    Award{" "}
+                    Award
                   </label>
                   <div className="mt-2">
                     <select
+                      {...register("award", {
+                        required: "Award selection is required",
+                      })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       id="award"
                       value={selectedAward}
@@ -273,6 +341,11 @@ export default function Register() {
                         People's Choice Award
                       </option>
                     </select>
+                    {errors.award && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.award.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -286,10 +359,18 @@ export default function Register() {
                     </label>
                     <div className="mt-2">
                       <input
+                        {...register(`file-${index}`, {
+                          required: "File is required",
+                        })}
                         className="block w-full text-sm text-gray-500 file:mr-4 file:rounded file:border-0 file:bg-gray-100 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-gray-900 hover:file:bg-gray-200"
                         id={`file-${index}`}
                         type="file"
                       />
+                      {errors[`file-${index}`] && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors[`file-${index}`].message}
+                        </p>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -303,29 +384,35 @@ export default function Register() {
                       Your message
                     </label>
                     <textarea
+                      {...register("message", {
+                        required: "Message is required",
+                      })}
                       id="message"
                       rows="4"
                       className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Write your thoughts here..."
                     ></textarea>
+                    {errors.message && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.message.message}
+                      </p>
+                    )}
                   </div>
                 )}
                 <div>
                   <button
-                    type="button"
+                    type="submit"
                     className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                   >
-                    Create Account <ArrowRight className="ml-2" size={16} />
+                    REGISTER HERE <ArrowRight className="ml-2" size={16} />
                   </button>
                 </div>
               </div>
             </form>
-            <div className="mt-3 w-full space-y-3">
-             
-            </div>
-          </div>
+            <div className="mt-3 w-full space-y-3"></div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

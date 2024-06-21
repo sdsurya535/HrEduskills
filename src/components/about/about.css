@@ -1,0 +1,65 @@
+.campaign {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  top: 650px;
+  left: 10px;
+}
+
+.campaigns {
+  position: absolute;
+  height: 180px;
+  width: 180px;
+  object-fit: cover;
+  top: 900px;
+  left: 540px;
+}
+
+@media (max-width: 1024px) {
+  .campaign {
+    top: 400px;
+    left: 5px;
+    height: 150px;
+    width: 150px;
+  }
+
+  .campaigns {
+    top: 600px;
+    left: 270px;
+    height: 140px;
+    width: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .campaign {
+    top: 300px;
+    left: 5px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .campaigns {
+    top: 450px;
+    left: 150px;
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .campaign {
+    top: 200px;
+    left: 5px;
+    height: 80px;
+    width: 80px;
+  }
+
+  .campaigns {
+    top: 300px;
+    left: 100px;
+    height: 80px;
+    width: 80px;
+  }
+}
