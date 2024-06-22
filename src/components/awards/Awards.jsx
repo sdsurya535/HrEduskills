@@ -2,7 +2,7 @@ import "./awards.css";
 import icon1 from "../../assets/icon-1.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 const Awards = () => {
@@ -76,10 +76,7 @@ const Awards = () => {
         transition={{ delay: 0.4 }}
         className="award-buttons relative mb-14 z-[9] mt-10"
       >
-        <Link
-          className="border border-white px-4 py-2 sm:px-4 sm:py-2 md:px-4 md:py-3"
-          to="/awards"
-        >
+        <Link className="view-all-button " to="/awards">
           View All Categories
         </Link>
       </motion.div>

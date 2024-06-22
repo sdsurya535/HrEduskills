@@ -2,7 +2,7 @@
   background-image: url("../../assets/statistics-bg.jpg") !important;
   background-position: center;
   background-size: cover;
-  
+
   position: relative;
 }
 
@@ -19,4 +19,18 @@
     rgba(32, 205, 255, 0.8) 100%
   );
   z-index: 1;
+}
+
+/* awards.css */
+
+.award-buttons .view-all-button {
+  border: 1px solid white;
+  padding: 0.8rem 1.2rem;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.award-buttons .view-all-button:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.05);
 }
