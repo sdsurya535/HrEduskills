@@ -17,7 +17,7 @@ const About = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-            <img src={aboutimg} className="md:mx-auto border-[20px] border-white rounded-full  lg:w-[560px]" alt="" />
+            <img src={aboutimg} className="md:mx-auto border-[20px] border-white rounded-full  lg:w-[420px] xl:w-[560px]" alt="" />
             {/* <img src={campaign} className="campaigns md:mx-auto border-[20px] border-white rounded-full" alt="" />
             <img src={osborn} className="campaign md:mx-auto border-[20px] border-white rounded-full " alt="" /> */}
           </motion.div>
@@ -27,18 +27,18 @@ const About = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-            <h4 className="text-[24px] font-bold">
+            <h4 className=" text-[24px] lg:text-[20px] xl:text-[24px] font-bold">
               India HR Summit & Awards 2024
             </h4>
-            <h4 className="text-[18px] font-bold uppercase mt-3 mb-4">
+            <h4 className="lg:text-[15px] xl:text-[18px] font-bold uppercase mt-3 mb-4">
               For the people and about the people
             </h4>
-            <p className="text-[16px] text-[#497898] leading-7 mb-4">
+            <p className="lg:text-[14px] xl:text-[16px] text-[#497898] leading-7 mb-4">
               The India HR Summit 2024 (IHRS2024) is the most prestigious annual
               conference on human resources for top executives and HR
               professionals in India organized By Synnex Group.
             </p>
-            <p className="text-[16px] text-[#497898] mb-5 leading-7">
+            <p className="lg:text-[14px] xl:text-[16px] text-[#497898] mb-5 leading-7">
               It is a non-profit and self-funded event for HR professionals to
               keep abreast with the trends, best practices and to strengthen
               their network. India HR Summit 2024” with the theme “Moving
@@ -51,12 +51,12 @@ const About = () => {
               <a
                 href=""
                 style={{ fontFamily: "Roboto,sans-serif" }}
-                className="block lg:inline-block transition-all hover:bg-[#3904f9] bg-[#3813C2] text-white px-[48px] py-[16px] text-[1rem] font-bold text-center"
+                className="block lg:inline-block transition-all hover:bg-[#3904f9] bg-[#3813C2] text-white px-[48px] py-[16px] lg:text-[14px] xl:text-[1rem] font-bold text-center"
               >
                 Register Now
               </a>
               <a
-                className="block lg:inline-block text-[1rem] hover:text-white transition-all hover:bg-[#3813C2] border-[2px] px-[48px] py-[16px] border-[#dae6ff] text-center"
+                className="block lg:inline-block lg:text-[14px] xl:text-[1rem] hover:text-white transition-all hover:bg-[#3813C2] border-[2px] px-[48px] py-[16px] border-[#dae6ff] text-center"
                 style={{ fontFamily: "Roboto,sans-serif" }}
                 href=""
               >
