@@ -2,7 +2,7 @@ import "./awards.css";
 import icon1 from "../../assets/icon-1.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 const Awards = () => {

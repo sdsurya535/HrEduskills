@@ -91,10 +91,13 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#home"
-                      onClick={() =>{ 
-                        setMenu("home")
-                        window.scrollTo(0, 0)}}
-                      className={`block ${menu==="home" && "text-blue-700"} nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
+                      onClick={() => {
+                        setMenu("home");
+                        window.scrollTo(0, 0);
+                      }}
+                      className={`block ${
+                        menu === "home" && "text-blue-700"
+                      } nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
                       aria-current="page"
                     >
                       Home
@@ -104,9 +107,12 @@ const Navbar = () => {
                     <Link
                       href="#about"
                       onClick={(e) => {
-                        setMenu("about")
-                        handleScrollToSection(e, "about")}}
-                      className={`block ${menu === "about" && "text-blue-700"} nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
+                        setMenu("about");
+                        handleScrollToSection(e, "about");
+                      }}
+                      className={`block ${
+                        menu === "about" && "text-blue-700"
+                      } nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
                     >
                       About
                     </Link>
@@ -115,9 +121,12 @@ const Navbar = () => {
                     <Link
                       href="#speaker"
                       onClick={(e) => {
-                        setMenu("speaker")
-                        handleScrollToSection(e, "speaker")}}
-                      className={`block ${menu === "speaker" && "text-blue-700"} nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
+                        setMenu("speaker");
+                        handleScrollToSection(e, "speaker");
+                      }}
+                      className={`block ${
+                        menu === "speaker" && "text-blue-700"
+                      } nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
                     >
                       Jury
                     </Link>
@@ -133,8 +142,11 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#registration"
-                      onClick={(e) => handleScrollToSection(e, "registration")}
-                      className="block nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                      onClick={(e) => {
+                        setMenu("registration");
+                        handleScrollToSection(e, "registration");
+                      }}
+                      className={` ${menu==="registration" && "text-blue-700"} block nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
                     >
                       Register
                     </Link>

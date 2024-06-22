@@ -13,7 +13,8 @@ export default function Register() {
     register,
     handleSubmit,
     formState: { errors },
-    trigger, // Added trigger to manually trigger validation
+    reset,
+    trigger,
   } = useForm();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,6 +37,7 @@ export default function Register() {
     setIsSubmitting(true);
     setTimeout(() => {
       console.log(data);
+      reset();
       setIsSubmitting(false);
       toast.success("Successfully Registered", {
         position: "top-center",

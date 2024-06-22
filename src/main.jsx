@@ -6,12 +6,14 @@ import AllAward from "./pages/awards/AllAward";
 import AllTab from "./AllTab";
 import "./index.css";
 import Scroll from "./components/scrolltop/Scroll";
+import ErrorPage from "./pages/errorpage/ErrorPage";
 
 const routes = (
   <Routes>
     <Route path="/" element={<App />}>
       <Route index element={<AllTab />} />
       <Route path="awards" element={<AllAward />} />
+      <Route path="*" element={<ErrorPage />} />
     </Route>
   </Routes>
 );
