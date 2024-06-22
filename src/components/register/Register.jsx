@@ -2,6 +2,8 @@ import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const [selectedAward, setSelectedAward] = useState("");
@@ -35,11 +37,23 @@ export default function Register() {
     setTimeout(() => {
       console.log(data);
       setIsSubmitting(false);
+      toast.success("Successfully Registered", {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
     }, 3000);
   };
 
   return (
     <section id="registration">
+      <ToastContainer />
       <motion.div
         className="grid grid-cols-1 max-w-screen-xl mx-auto lg:grid-cols-2 mt-10"
         initial={{ opacity: 0, y: 50 }}
