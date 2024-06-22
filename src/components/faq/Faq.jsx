@@ -25,6 +25,71 @@ const Faq = () => {
         "What is the difference between a regular speaker and a Bluetooth speaker",
       content:
         "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
     },
   ];
 
@@ -48,6 +113,56 @@ const Faq = () => {
         "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
     },
     {
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
+      title:
+        "What is the difference between a regular speaker and a Bluetooth speaker",
+      content:
+        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
+    },{
       title:
         "What is the difference between a regular speaker and a Bluetooth speaker",
       content:
