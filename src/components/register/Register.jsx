@@ -2,7 +2,6 @@ import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import mainteam from "../../assets/mainteam.jpg";
 
 export default function Register() {
   const [selectedAward, setSelectedAward] = useState("");
@@ -12,7 +11,7 @@ export default function Register() {
     register,
     handleSubmit,
     formState: { errors },
-    
+    trigger, // Added trigger to manually trigger validation
   } = useForm();
 
   const handleAwardChange = (event) => {
@@ -167,6 +166,7 @@ export default function Register() {
                       type="text"
                       placeholder="Full Name"
                       id="name"
+                      onBlur={() => trigger("name")} // Trigger validation on blur
                     />
                     {errors.name && (
                       <p className="text-red-500 text-sm mt-1">
@@ -175,6 +175,7 @@ export default function Register() {
                     )}
                   </div>
                 </div>
+
                 <div>
                   <label
                     htmlFor="email"
@@ -185,16 +186,17 @@ export default function Register() {
                   <div className="mt-2">
                     <input
                       {...register("email", {
-                        required: "Email is required",
+                        required: "Email address is required",
                         pattern: {
                           value: /^\S+@\S+$/i,
-                          message: "Enter a valid email address",
+                          message: "Please enter a valid email address",
                         },
                       })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
                       id="email"
+                      onBlur={() => trigger("email")} // Trigger validation on blur
                     />
                     {errors.email && (
                       <p className="text-red-500 text-sm mt-1">
@@ -203,59 +205,28 @@ export default function Register() {
                     )}
                   </div>
                 </div>
+
                 <div>
-                  <div className="flex items-center justify-between">
-                    <label
-                      htmlFor="password"
-                      className="text-base font-medium text-gray-900"
-                    >
-                      Password
-                    </label>
-                  </div>
-                  <div className="mt-2">
-                    <input
-                      {...register("password", {
-                        required: "Password is required",
-                        minLength: {
-                          value: 8,
-                          message:
-                            "Password must be at least 8 characters long",
-                        },
-                      })}
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                      type="password"
-                      placeholder="Password"
-                      id="password"
-                    />
-                    {errors.password && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.password.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center justify-between">
-                    <label
-                      htmlFor="phone"
-                      className="text-base font-medium text-gray-900"
-                    >
-                      Mobile Number
-                    </label>
-                  </div>
+                  <label
+                    htmlFor="phone"
+                    className="text-base font-medium text-gray-900"
+                  >
+                    Phone Number
+                  </label>
                   <div className="mt-2">
                     <input
                       {...register("phone", {
-                        required: "Mobile Number is required",
+                        required: "Phone number is required",
                         pattern: {
-                          value: /^[0-9]{10}$/,
-                          message: "Enter a valid 10-digit mobile number",
+                          value: /^[0-9]+$/,
+                          message: "Please enter a valid phone number",
                         },
                       })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                      type="text"
-                      placeholder="mobile number"
+                      type="tel"
+                      placeholder="Phone Number"
                       id="phone"
+                      onBlur={() => trigger("phone")} // Trigger validation on blur
                     />
                     {errors.phone && (
                       <p className="text-red-500 text-sm mt-1">
@@ -282,6 +253,7 @@ export default function Register() {
                       type="text"
                       placeholder="company"
                       id="company"
+                      onBlur={() => trigger("company")}
                     />
                     {errors.company && (
                       <p className="text-red-500 text-sm mt-1">
@@ -308,6 +280,7 @@ export default function Register() {
                       type="text"
                       placeholder="designation"
                       id="designation"
+                      onBlur={() => trigger("designation")}
                     />
                     {errors.designation && (
                       <p className="text-red-500 text-sm mt-1">
@@ -316,22 +289,23 @@ export default function Register() {
                     )}
                   </div>
                 </div>
+
                 <div>
                   <label
                     htmlFor="award"
                     className="text-base font-medium text-gray-900"
                   >
-                    Award
+                    Award Category
                   </label>
                   <div className="mt-2">
                     <select
                       {...register("award", {
-                        required: "Award selection is required",
+                        required: "Award category is required",
                       })}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       id="award"
-                      value={selectedAward}
                       onChange={handleAwardChange}
+                      onBlur={() => trigger("award")} // Trigger validation on blur
                     >
                       <option value="">Select an award</option>
                       <option value="Best Choice Award">
@@ -352,23 +326,24 @@ export default function Register() {
                 {fileInputs.map((_, index) => (
                   <div key={index}>
                     <label
-                      htmlFor={`file-${index}`}
+                      htmlFor={`file_${index}`}
                       className="text-base font-medium text-gray-900"
                     >
-                      Supportive Document {index + 1}
+                      Upload File {index + 1}
                     </label>
                     <div className="mt-2">
                       <input
-                        {...register(`file-${index}`, {
-                          required: "File is required",
+                        {...register(`file_${index}`, {
+                          required: "This file is required",
                         })}
-                        className="block w-full text-sm text-gray-500 file:mr-4 file:rounded file:border-0 file:bg-gray-100 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-gray-900 hover:file:bg-gray-200"
-                        id={`file-${index}`}
+                        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         type="file"
+                        id={`file_${index}`}
+                        onBlur={() => trigger(`file_${index}`)} // Trigger validation on blur
                       />
-                      {errors[`file-${index}`] && (
+                      {errors[`file_${index}`] && (
                         <p className="text-red-500 text-sm mt-1">
-                          {errors[`file-${index}`].message}
+                          {errors[`file_${index}`].message}
                         </p>
                       )}
                     </div>
@@ -384,32 +359,26 @@ export default function Register() {
                       Your message
                     </label>
                     <textarea
-                      {...register("message", {
-                        required: "Message is required",
-                      })}
+                      
                       id="message"
                       rows="4"
                       className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Write your thoughts here..."
                     ></textarea>
-                    {errors.message && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.message.message}
-                      </p>
-                    )}
+                    
                   </div>
                 )}
+
                 <div>
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                    className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 text-base font-semibold leading-7 text-white"
                   >
-                    REGISTER HERE <ArrowRight className="ml-2" size={16} />
+                    Get started <ArrowRight className="ml-2" size={16} />
                   </button>
                 </div>
               </div>
             </form>
-            <div className="mt-3 w-full space-y-3"></div>
           </motion.div>
         </div>
       </motion.div>

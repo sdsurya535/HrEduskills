@@ -91,12 +91,12 @@ const SpeakerCard = ({ speaker }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className="relative h-[500px] overflow-hidden w-[400px] md:h-[330px] mx-auto md:mx-0 md:w-[300px] rounded-md speaker-card"
+      className="relative h-[400px] w-[300px]  sm:h-[500px] overflow-hidden sm:w-[400px] md:h-[330px] mx-auto md:mx-0 md:w-[300px] rounded-md speaker-card"
     >
       <img
         src={speaker.image}
         alt={speaker.name}
-        className="z-0 h-full mx-auto w-full rounded-md object-cover"
+        className="z-0 h-full  mx-auto w-full rounded-md object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-800 opacity-95 to-transparent"></div>
       <div className="absolute bottom-4 left-4 text-left">

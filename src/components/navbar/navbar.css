@@ -206,3 +206,39 @@ html {
     animation: slideOutLeft 0.5s forwards;
   }
 }
+
+/* Define the base styles for the nav items */
+.nav-item {
+  position: relative;
+  display: inline-block;
+  padding: 2px 3px;
+  text-transform: uppercase;
+  color: #000; /* Change to your desired color */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+/* Add the underline effect */
+.nav-item::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: #3813c2; /* Change to your desired underline color */
+  transition: width 0.3s ease;
+  -webkit-transition: width 0.3s ease;
+}
+
+/* Hover effect */
+.nav-item:hover::after {
+  width: 100%;
+  left: 0;
+  background: #3813c2; /* Change to your desired underline color */
+}
+
+.nav-item:hover {
+  color: #3813c2; /* Change to your desired hover text color */
+}

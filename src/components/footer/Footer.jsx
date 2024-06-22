@@ -6,6 +6,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneVolume } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import "./footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -30,26 +31,26 @@ const Footer = () => {
             <a href="#">
               <AiOutlineFacebook
                 size={50}
-                className="icon transition border-[2px] border-[#393d64] px-3 py-3 rounded-full hover:bg-[#3813c2]"
+                className="icon transition border-[2px]  px-3 py-3 rounded-full hover:bg-[#3813c2]"
               />
             </a>
             <a href="#">
               <FaXTwitter
                 size={50}
                 fill="white"
-                className="icon transition border-[2px] border-[#393d64] px-3 py-3 rounded-full hover:bg-[#3813c2]"
+                className="icon transition border-[2px] px-3 py-3 rounded-full hover:bg-[#3813c2]"
               />
             </a>
             <a href="#">
               <FaYoutube
                 size={50}
-                className="icon transition border-[2px] border-[#393d64] px-3 py-3 rounded-full hover:bg-[#3813c2]"
+                className="icon transition border-[2px]  px-3 py-3 rounded-full hover:bg-[#3813c2]"
               />
             </a>
             <a href="#">
               <FaLinkedin
                 size={50}
-                className="icon transition border-[2px] border-[#393d64] px-3 py-3 rounded-full hover:bg-[#3813c2]"
+                className="icon transition border-[2px]  px-3 py-3 rounded-full hover:bg-[#3813c2]"
               />
             </a>
           </div>
@@ -128,28 +129,28 @@ const Footer = () => {
             <a
               style={{ fontFamily: "Karla,sans-serif" }}
               className="font-semibold"
-              href="#"
+              href="#about"
             >
               About
             </a>
-            <a
+            <Link
               style={{ fontFamily: "Karla,sans-serif" }}
               className="font-semibold"
-              href="#"
+              to="/awards"
             >
-              Speaker
-            </a>
+              Awards
+            </Link>
             <a
               style={{ fontFamily: "Karla,sans-serif" }}
               className="font-semibold"
-              href="#"
+              href="#speaker"
             >
               Jury
             </a>
             <a
               style={{ fontFamily: "Karla,sans-serif" }}
               className="font-semibold"
-              href="#"
+              href="#registration"
             >
               Register
             </a>
