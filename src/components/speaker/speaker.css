@@ -25,4 +25,14 @@
   background-position: center;
   width: 100%;
   position: relative;
+  overflow: hidden;
+}
+
+.speaker-card img {
+  transition: transform 0.3s ease;
+  
+}
+
+.speaker-card:hover img {
+  transform: scale(1.1);
 }

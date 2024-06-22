@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import business from "../../assets/tim.jpg";
@@ -92,7 +91,7 @@ const SpeakerCard = ({ speaker }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className="relative h-[500px] w-[400px] md:h-[330px] mx-auto md:mx-0 md:w-[300px] rounded-md"
+      className="relative h-[500px] overflow-hidden w-[400px] md:h-[330px] mx-auto md:mx-0 md:w-[300px] rounded-md speaker-card"
     >
       <img
         src={speaker.image}
@@ -113,7 +112,7 @@ const SpeakerCard = ({ speaker }) => {
         </a>
       </div>
       <a href={speaker.linkedin}>
-        <FaLinkedinIn size={10} className="link-icon" />
+        <FaLinkedinIn size={20} className="link-icon" />
       </a>
     </motion.div>
   );

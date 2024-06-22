@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import award from "../../assets/award.jpg";
+// import award from "../../assets/award.jpg";
 import award2 from "../../assets/award-2.jpg";
 import "./allawards.css";
 import MainNav from "../another/MainNav";
