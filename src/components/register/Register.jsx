@@ -209,7 +209,7 @@ export default function Register() {
                     {...register("email", {
                       required: "Email is required",
                       pattern: {
-                        value: /^\S+@\S+$/i,
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                         message: "Entered value does not match email format",
                       },
                     })}
@@ -239,7 +239,7 @@ export default function Register() {
                     {...register("phone", {
                       required: "Phone Number is required",
                       pattern: {
-                        value: /^[0-9]+$/,
+                        value: /^[6-9]\d{9}$/,
                         message:
                           "Entered value does not match phone number format",
                       },
