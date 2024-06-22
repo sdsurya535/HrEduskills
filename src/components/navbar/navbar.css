@@ -242,3 +242,108 @@ html {
 .nav-item:hover {
   color: #3813c2; /* Change to your desired hover text color */
 }
+
+/* Basic styles for the navbar */
+.navbar {
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-scrolled {
+  box-shadow: 0 4px 2px -2px gray;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* Add a slightly transparent background */
+}
+
+/* Mobile menu transition */
+.mobile-menu {
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu.closed {
+  transform: translateX(-100%);
+}
+/* Basic styles for the navbar */
+.navbar {
+  transition: all 0.3s ease-in-out;
+}
+
+/* .navbar-scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95); 
+  box-shadow: 0 4px 2px -2px gray;
+  transition: all 0.3s ease-in-out;
+   
+} */
+
+/* .navbar-scrolled {
+  background-color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-scrolled:hover {
+  background-color: lightblue;
+} */
+
+.mobile-menu {
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu.closed {
+  transform: translateX(-100%);
+}
+
+.navbar {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    padding 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px 0;
+}
+
+.navbar-scrolled .nav-item {
+  transition: color 0.3s;
+}
+
+.navbar-scrolled .nav-item:hover {
+  color: #007bff;
+}
+
+.logo-animate {
+  transition: transform 0.5s;
+}
+
+.navbar-scrolled .logo-animate {
+  transform: scale(1.1);
+}
+
+.animate-bg-fade {
+  animation: bgFade 2s ease-in-out;
+}
+
+@keyframes bgFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

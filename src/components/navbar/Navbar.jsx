@@ -4,6 +4,7 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [menu, setMenu] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -39,10 +40,10 @@ const Navbar = () => {
       <div id="home">
         <div className="bg-image animate-bg-fade ">
           <nav
-            className={`bg-white border-gray-200 dark:bg-gray-900 mx-auto ${
+            className={`bg-white navbar border-gray-200  dark:bg-gray-900 ${
               isScrolled
                 ? "fixed transition-all duration-300 z-[50] top-0 w-full left-0 right-0 navbar-scrolled"
-                : "mx-auto max-w-screen-xl"
+                : "mx-auto  max-w-screen-xl"
             }`}
           >
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
@@ -90,8 +91,10 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#home"
-                      onClick={() => window.scrollTo(0, 0)}
-                      className="block nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                      onClick={() =>{ 
+                        setMenu("home")
+                        window.scrollTo(0, 0)}}
+                      className={`block ${menu==="home" && "text-blue-700"} nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
                       aria-current="page"
                     >
                       Home
@@ -100,8 +103,10 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#about"
-                      onClick={(e) => handleScrollToSection(e, "about")}
-                      className="block nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                      onClick={(e) => {
+                        setMenu("about")
+                        handleScrollToSection(e, "about")}}
+                      className={`block ${menu === "about" && "text-blue-700"} nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
                     >
                       About
                     </Link>
@@ -109,8 +114,10 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#speaker"
-                      onClick={(e) => handleScrollToSection(e, "speaker")}
-                      className="block nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                      onClick={(e) => {
+                        setMenu("speaker")
+                        handleScrollToSection(e, "speaker")}}
+                      className={`block ${menu === "speaker" && "text-blue-700"} nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
                     >
                       Jury
                     </Link>
