@@ -15,7 +15,7 @@ import Register from "./components/register/Register";
 
 const routes = (
   <Routes>
-    <Route path="/hreduskills" element={<App />}>
+    <Route path="/" element={<App />}>
       <Route index element={<AllTab />} />
       <Route path="awards" element={<AllAward />} />
       <Route path="login" element={<Login />}></Route>
