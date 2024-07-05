@@ -1,0 +1,6 @@
+[
+  { "value": "", "label": "Select an award" },
+  { "value": "Best Choice Award", "label": "Best Choice Award" },
+  { "value": "People's Choice Award", "label": "People's Choice Award" },
+  { "value": "Hr Skills Award", "label": "Hr Skills Award" }
+]

@@ -1,0 +1,85 @@
+.gradient-button a {
+  display: inline-block !important;
+  padding: 2px 18px !important;
+  color: #fff !important;
+  text-transform: capitalize;
+  font-size: 15px;
+  background: rgb(19, 175, 240);
+  background: linear-gradient(
+    105deg,
+    rgba(91, 104, 235, 1) 0%,
+    rgba(40, 225, 253, 1) 100%
+  );
+  border-radius: 23px;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: all 0.5s;
+}
+
+.gradient-button a:hover {
+  color: #fff !important;
+  background: rgb(19, 175, 240);
+  background: linear-gradient(
+    105deg,
+    rgba(91, 104, 235, 1) 0%,
+    rgba(40, 225, 253, 1) 100%
+  );
+}
+
+.border-button a {
+  display: inline-block !important;
+  padding: 10px 20px !important;
+  color: #4b8ef1 !important;
+  border: 1px solid #4b8ef1;
+  text-transform: capitalize;
+  font-size: 15px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 23px;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: all 0.5s;
+}
+
+.border-button a:hover {
+  background-color: #4b8ef1;
+  color: #fff !important;
+}
+/* Button styling */
+.gradient-button a {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 12px; /* Adjust padding as needed */
+  background-color: #12357a; /* Button background color */
+  border-radius: 50px; /* Rounded corners */
+  overflow: hidden;
+  z-index: 1;
+  width: 150px;
+}
+
+.gradient-button a i {
+  margin-right: 5px;
+}
+
+/* Blink animation container */
+.blink-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* Blink animation */
+.blink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 2px solid #12357a; /* Blinking border color */
+  border-radius: 50%;
+  animation: blink-animation 1.5s infinite ease-in-out;
+  z-index: 0;
+}

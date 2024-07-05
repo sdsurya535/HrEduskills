@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import awardsData from "./awards.json";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [selectedAward, setSelectedAward] = useState("");
   const [fileInputs, setFileInputs] = useState([]);
-
   const {
     register,
     handleSubmit,
@@ -16,7 +18,6 @@ export default function Register() {
     reset,
     trigger,
   } = useForm();
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAwardChange = (event) => {
@@ -24,19 +25,68 @@ export default function Register() {
     setSelectedAward(award);
 
     let numberOfFiles = 0;
-    if (award === "Best Choice Award") {
-      numberOfFiles = 2;
-    } else if (award === "People's Choice Award") {
-      numberOfFiles = 4;
+    switch (award) {
+      case "Best Choice Award":
+        numberOfFiles = 2;
+        break;
+      case "People's Choice Award":
+        numberOfFiles = 5;
+        break;
+      case "Hr Skills Award":
+        numberOfFiles = 3;
+        break;
+      default:
+        numberOfFiles = 0;
+        break;
     }
 
     setFileInputs(Array(numberOfFiles).fill(null));
   };
 
-  const onSubmit = (data) => {
+  const validateFile = (file) => {
+    if (file && file[0]) {
+      const fileType = file[0].type;
+      const fileSize = file[0].size;
+      if (fileType !== "application/pdf") {
+        return "*file must be in PDF format";
+      }
+      if (fileSize > 2 * 1024 * 1024) {
+        return "*file size must not exceed 2MB";
+      }
+    }
+    return true;
+  };
+
+  const onSubmit = async (data) => {
     setIsSubmitting(true);
-    setTimeout(() => {
-      console.log(data);
+
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("mobile", data.mobile);
+    formData.append("company", data.company);
+    formData.append("designation", data.designation);
+    formData.append("awardCategory", data.awardCategory);
+    if (data.reason) {
+      formData.append("reason", data.reason);
+    }
+
+    fileInputs.forEach((_, index) => {
+      const file = data[`file${index + 1}`];
+      if (file && file.length > 0) {
+        formData.append(`file${index + 1}`, file[0]);
+      }
+    });
+
+    console.log(data);
+
+    try {
+      await axios.post(import.meta.env.VITE_API_URL, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       reset();
       setIsSubmitting(false);
       toast.success("Successfully Registered", {
@@ -50,7 +100,21 @@ export default function Register() {
         theme: "light",
         transition: Slide,
       });
-    }, 3000);
+    } catch (error) {
+      console.error("There was an error!", error);
+      setIsSubmitting(false);
+      toast.error("Registration failed", {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+    }
   };
 
   return (
@@ -74,9 +138,7 @@ export default function Register() {
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
           <div className="relative">
             <div className="w-full max-w-xl xl:mx-auto xl:w-full xl:max-w-xl xl:pr-24">
-              <h3 className="text-4xl font-bold text-white">
-                Now you don't have to rely on your designer to create a new page
-              </h3>
+              <h3 className="text-4xl font-bold text-white">Eduskills</h3>
               <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
                 <li className="flex items-center space-x-3">
                   <div className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
@@ -94,7 +156,7 @@ export default function Register() {
                     </svg>
                   </div>
                   <span className="text-lg font-medium text-white">
-                    Commercial License
+                    WorkForce 4.0
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
@@ -113,7 +175,7 @@ export default function Register() {
                     </svg>
                   </div>
                   <span className="text-lg font-medium text-white">
-                    Unlimited Exports
+                   Virtual Internships
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
@@ -132,7 +194,7 @@ export default function Register() {
                     </svg>
                   </div>
                   <span className="text-lg font-medium text-white">
-                    120+ Coded Blocks
+                    Institute Collaborations
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">
@@ -151,7 +213,7 @@ export default function Register() {
                     </svg>
                   </div>
                   <span className="text-lg font-medium text-white">
-                    Design Files Included
+                    Faculty Development
                   </span>
                 </li>
               </ul>
@@ -182,6 +244,11 @@ export default function Register() {
                   <input
                     {...register("name", {
                       required: "Full Name is required",
+                      pattern: {
+                        value: /^[A-Za-z\s]{2,50}$/,
+                        message:
+                          "Please enter a valid full name (2-50 characters)",
+                      },
                     })}
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="text"
@@ -236,23 +303,23 @@ export default function Register() {
                 </label>
                 <div className="mt-2">
                   <input
-                    {...register("phone", {
-                      required: "Phone Number is required",
+                    {...register("mobile", {
+                      required: "mobile number is required",
                       pattern: {
                         value: /^[6-9]\d{9}$/,
                         message:
-                          "Entered value does not match phone number format",
+                          "mobile number must be 10 digits and start with 6,7,8,9",
                       },
                     })}
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="text"
-                    placeholder="Phone Number"
-                    id="phone"
-                    onBlur={() => trigger("phone")} // Trigger validation on blur
+                    placeholder="Mobile Number"
+                    id="mobile"
+                    onBlur={() => trigger("mobile")} // Trigger validation on blur
                   />
-                  {errors.phone && (
+                  {errors.mobile && (
                     <p className="text-red-500 text-sm mt-1">
-                      {errors.phone.message}
+                      {errors.mobile.message}
                     </p>
                   )}
                 </div>
@@ -322,7 +389,7 @@ export default function Register() {
                 </label>
                 <div className="mt-2">
                   <select
-                    {...register("award", {
+                    {...register("awardCategory", {
                       required: "Award selection is required",
                     })}
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
@@ -330,15 +397,15 @@ export default function Register() {
                     onChange={handleAwardChange}
                     value={selectedAward}
                   >
-                    <option value="">Select an award</option>
-                    <option value="Best Choice Award">Best Choice Award</option>
-                    <option value="People's Choice Award">
-                      People's Choice Award
-                    </option>
+                    {awardsData.map((option, index) => (
+                      <option key={index} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
                   </select>
-                  {errors.award && (
+                  {errors.awardCategory && (
                     <p className="text-red-500 text-sm mt-1">
-                      {errors.award.message}
+                      {errors.awardCategory.message}
                     </p>
                   )}
                 </div>
@@ -346,26 +413,32 @@ export default function Register() {
 
               {fileInputs.map((_, index) => (
                 <div key={index}>
-                  <label
-                    htmlFor={`file${index}`}
-                    className="text-base font-medium text-gray-900"
-                  >
-                    Upload File {index + 1}
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      {...register(`file${index}`, {
-                        required: `File ${index + 1} is required`,
-                      })}
-                      className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                      type="file"
-                      id={`file${index}`}
-                      onBlur={() => trigger(`file${index}`)} // Trigger validation on blur
-                    />
-                    {errors[`file${index}`] && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors[`file${index}`].message}
-                      </p>
+                  <input
+                    type="file"
+                    className={`block w-full text-black file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600 ${
+                      errors[`file${index + 1}`]
+                        ? "border-red-500"
+                        : "border-gray-200"
+                    } rounded-md focus:outline-none`}
+                    {...register(`file${index + 1}`, {
+                      required: "This file is required",
+                      validate: validateFile,
+                    })}
+                  />
+                  <div className="flex flex-col gap-1">
+                    {!errors[`file${index + 1}`] && (
+                      <span className="text-red-700 text-sm mt-2">
+                        <span className="text-red-700">*</span> file must be in
+                        pdf format.
+                        <br />
+                        <span className="text-red-700">*</span> file must not
+                        exceed 2MB.
+                      </span>
+                    )}
+                    {errors[`file${index + 1}`] && (
+                      <span className="text-red-500 mt-1 text-sm">
+                        {errors[`file${index + 1}`].message}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -380,12 +453,20 @@ export default function Register() {
                     Your message
                   </label>
                   <textarea
-                    {...register("yourmessage")}
+                    {...register("reason", {
+                      required: "thoughts are required",
+                    })}
                     id="message"
                     rows="4"
                     className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Write your thoughts here..."
+                    onBlur={() => trigger("reason")}
                   ></textarea>
+                  {errors.reason && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.reason.message}
+                    </p>
+                  )}
                 </div>
               )}
 
@@ -416,12 +497,20 @@ export default function Register() {
                     Loading...
                   </button>
                 ) : (
-                  <button
-                    type="submit"
-                    className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
-                  >
-                    Register Here <ArrowRight className="ml-2" size={18} />
-                  </button>
+                  <>
+                    <button
+                      type="submit"
+                      className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                    >
+                      Register Here <ArrowRight className="ml-2" size={18} />
+                    </button>{" "}
+                    <Link
+                      to={"/"}
+                      className="inline-flex mt-5 w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                    >
+                      Go Back
+                    </Link>
+                  </>
                 )}
               </div>
             </form>

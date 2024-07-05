@@ -1,65 +1,68 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import business from "../../assets/tim.jpg";
-import blackdr from "../../assets/blackdr.jpg";
-import bluedr from "../../assets/bluedr.jpg";
-import bluishdr from "../../assets/bluishdr.jpg";
-import coatdr from "../../assets/coatdr.jpg";
-import balddr from "../../assets/balddr.jpg";
-import youngdr from "../../assets/youngdr.jpg";
+import pallav from "../../assets/juriesimg/pallav.jpg";
+import malini from "../../assets/juriesimg/malini.jpg";
+import arvind from "../../assets/juriesimg/arvind.jpg";
+import sudarshan from "../../assets/juriesimg/sudarshan.jpg";
+import talha from "../../assets/juriesimg/talha.jpg";
+import anshul from "../../assets/juriesimg/anshul.jpg";
+import prashant from "../../assets/juriesimg/prashant.jpg";
+import reena from "../../assets/juriesimg/reena.png";
+import rohit from "../../assets/juriesimg/rohit.jpg";
+import deepti from "../../assets/juriesimg/deepti.jpeg";
 import { FaLinkedinIn } from "react-icons/fa";
 import "./speaker.css";
 
 const Speaker = () => {
   const speakerArr = [
     {
-      name: "Harjit Khanduja",
-      designation: "Sr. Vice President- HR, Reliance Jio",
-      image: business,
-      linkedin: "https://www.linkedin.com/in/",
+      name: "Pallav Singh",
+      designation: "AVP Human Resources at HSBC",
+      image: pallav,
+      linkedin: "https://linkedin.com/in/pallav-bhattacharya-2776a8b",
     },
     {
-      name: "Harjit Khanduja",
-      designation: "Sr. Vice President- HR, Reliance Jio",
-      image: blackdr,
-      linkedin: "https://www.linkedin.com/in/",
+      name: "Malini Saravanan",
+      designation: "Head HR (III SBG) Water & EffluentTreatment IC",
+      image: malini,
+      linkedin: "https://linkedin.com/in/malini-saravanan-2041b9b",
     },
     {
-      name: "Harjit Khanduja",
-      designation: "Sr. Vice President- HR, Reliance Jio",
-      image: bluedr,
-      linkedin: "https://www.linkedin.com/in/",
+      name: "Arvind Mathur",
+      designation: "Global People Operations",
+      image: arvind,
+      linkedin: "https://linkedin.com/in/arvindmathur1",
     },
     {
-      name: "Harjit Khanduja",
-      designation: "Sr. Vice President- HR, Reliance Jio",
-      image: bluishdr,
-      linkedin: "https://www.linkedin.com/in/",
+      name: "Sudarshan Rajagopal",
+      designation: "Partner cybersecurity- Technology Consulting",
+      image: sudarshan,
+      linkedin: "https://linkedin.com/in/sudarshanrajagopal",
     },
     {
-      name: "Harjit Khanduja",
-      designation: "Sr. Vice President- HR, Reliance Jio",
-      image: coatdr,
-      linkedin: "https://www.linkedin.com/in/",
+      name: "Talha Tahir",
+      designation: "Associate Director Recruitment at FIS",
+      image: talha,
+      linkedin: "https://linkedin.com/in/talhatahir",
     },
     {
-      name: "Harjit Khanduja",
-      designation: "Sr. Vice President- HR, Reliance Jio",
-      image: youngdr,
-      linkedin: "https://www.linkedin.com/in/",
+      name: "Anshul Bhargava",
+      designation: "Senior Vice President & Global Head – Talent Acquisition",
+      image: anshul,
+      linkedin: "https://linkedin.com/in/anshul-bhargava-3151a6199",
     },
     {
-      name: "Harjit Khanduja",
-      designation: "Sr. Vice President- HR, Reliance Jio",
-      image: balddr,
-      linkedin: "https://www.linkedin.com/in/",
+      name: "Prashant Sinha",
+      designation: "Operations Head at Tech Mahindra",
+      image: prashant,
+      linkedin: "https://linkedin.com/in/prashant-sinha-link",
     },
     {
-      name: "Harjit Khanduja",
-      designation: "Sr. Vice President- HR, Reliance Jio",
-      image: business,
-      linkedin: "https://www.linkedin.com/in/",
+      name: "Dr. Reena Das",
+      designation: "Chief Human Resource Officer @ Keolis Hyderabad",
+      image: reena,
+      linkedin: "https://linkedin.com/in/dr-reena-das-1434255a",
     },
   ];
 
@@ -67,7 +70,7 @@ const Speaker = () => {
     <>
       <div className="mt-16 speaker-bg" id="speaker">
         <h1 className="text-5xl text-center mt-2 mb-10 font-bold">
-          Our Juries
+          Our Expert Speakers
         </h1>
         <div className="speaker-sec max-w-full md:max-w-screen-xl mx-auto px-0 md:px-16 lg:px-14 xl:px-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 gap-y-10">
           {speakerArr.map((speaker, index) => (

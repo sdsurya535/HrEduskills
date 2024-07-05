@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
-import EduSkills from "../../assets/logo.png";
+import Swal from "sweetalert2";
+import EduSkills from "../../assets/HR Summit logo.png";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import NomBtn from "../nombtn/NomBtn";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,9 +18,41 @@ const Navbar = () => {
 
   const handleScrollToSection = (event, sectionId) => {
     event.preventDefault();
-    document.getElementById(sectionId).scrollIntoView({
-      behavior: "smooth",
-    });
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const navbarHeight = document.querySelector(".navbar").offsetHeight;
+      const offsetTop1 =
+        section.getBoundingClientRect().top +
+        window.scrollY -
+        navbarHeight -
+        98;
+      const offsetTop2 =
+        section.getBoundingClientRect().top +
+        window.scrollY -
+        navbarHeight -
+        87;
+      const offsetTop3 =
+        section.getBoundingClientRect().top +
+        window.scrollY -
+        navbarHeight -
+        50;
+      if (section.id === "about") {
+        window.scrollTo({
+          top: offsetTop1,
+          behavior: "smooth",
+        });
+      } else if (section.id === "speaker") {
+        window.scrollTo({
+          top: offsetTop2,
+          behavior: "smooth",
+        });
+      } else if (section.id === "registration") {
+        window.scrollTo({
+          top: offsetTop3,
+          behavior: "smooth",
+        });
+      }
+    }
     setIsMenuOpen(false); // Close the menu if it's open
   };
 
@@ -35,15 +71,33 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleNominateClick = (e) => {
+    e.preventDefault();
+    setMenu("registration");
+    Swal.fire({
+      title:
+        "Are you attending in person at the HR Summit Awards on 28th September 2024 at New Delhi?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/hreduskills/register");
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Handle the case when the user cancels
+      }
+    });
+  };
+
   return (
     <>
       <div id="home">
-        <div className="bg-image animate-bg-fade ">
+        <div className="bg-image animate-bg-fade">
           <nav
-            className={`bg-white navbar border-gray-200  dark:bg-gray-900 ${
+            className={`bg-white navbar border-gray-200 dark:bg-gray-900 ${
               isScrolled
                 ? "fixed transition-all duration-300 z-[50] top-0 w-full left-0 right-0 navbar-scrolled"
-                : "mx-auto  max-w-screen-xl"
+                : "mx-auto max-w-screen-xl"
             }`}
           >
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
@@ -107,6 +161,7 @@ const Navbar = () => {
                     <Link
                       href="#about"
                       onClick={(e) => {
+                        e.preventDefault();
                         setMenu("about");
                         handleScrollToSection(e, "about");
                       }}
@@ -118,38 +173,17 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="#speaker"
-                      onClick={(e) => {
-                        setMenu("speaker");
-                        handleScrollToSection(e, "speaker");
-                      }}
+                    <a
+                      href="https://connect.eduskillsfoundation.org/#guests"
                       className={`block ${
                         menu === "speaker" && "text-blue-700"
                       } nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
                     >
-                      Jury
-                    </Link>
+                      Speakers
+                    </a>
                   </li>
-                  <li>
-                    <Link
-                      to={"/awards"}
-                      className="block nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                    >
-                      Awards
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#registration"
-                      onClick={(e) => {
-                        setMenu("registration");
-                        handleScrollToSection(e, "registration");
-                      }}
-                      className={` ${menu==="registration" && "text-blue-700"} block nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
-                    >
-                      Register
-                    </Link>
+                  <li >
+                    <NomBtn />
                   </li>
                 </ul>
               </div>
@@ -164,21 +198,21 @@ const Navbar = () => {
               Welcome To
             </h1>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              India HR Summit & Awards 2024
+              Eduskills HR Summit & Awards 2024
             </h1>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-              05th & 06th Dec 2024
+              28th September 2024
             </h2>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-              Taj Santacruz - Mumbai
+              Dr. Ambedkar International Centre, New Delhi
             </h2>
             <a
               style={{ fontFamily: "Roboto, sans-serif" }}
               href="#registration"
-              onClick={(e) => handleScrollToSection(e, "registration")}
+              onClick={handleNominateClick}
               className="mt-5 mb-48 hover:bg-[#3904f9] transition-all bg-[#3813C2] px-8 md:px-12 lg:px-16 py-3 md:py-4 text-base md:text-lg lg:text-xl font-bold btn-animate"
             >
-              Register Now
+              Nominate Now
             </a>
           </div>
         </div>

@@ -1,0 +1,319 @@
+/* nominate.css */
+.modal {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 753px !important;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+.modal .header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.modal .content {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.modal .actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal .button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal .button:hover {
+  background-color: #45a049;
+}
+
+/* Additional classes for the popup modal styling */
+.bg-white {
+  background-color: white;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.shadow {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dark\\:bg-gray-700 {
+  background-color: #374151;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.rounded-t {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.dark\\:border-gray-600 {
+  border-color: #4b5563;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-gray-900 {
+  color: #1f2937;
+}
+
+.dark\\:text-white {
+  color: white;
+}
+
+.text-base {
+  font-size: 1rem;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+.dark\\:text-gray-400 {
+  color: #9ca3af;
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
+.rounded-b {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.text-white {
+  color: white;
+}
+
+.bg-blue-700 {
+  background-color: #1d4ed8;
+}
+
+.hover\\:bg-blue-800:hover {
+  background-color: #1e40af;
+}
+
+.focus\\:ring-4:focus {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
+}
+
+.focus\\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\\:ring-blue-300:focus {
+  box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.5);
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.py-2\\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dark\\:bg-blue-600 {
+  background-color: #2563eb;
+}
+
+.dark\\:hover\\:bg-blue-700:hover {
+  background-color: #1e40af;
+}
+
+.dark\\:focus\\:ring-blue-800:focus {
+  box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.5);
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.hover\\:bg-gray-200:hover {
+  background-color: #e5e7eb;
+}
+
+.hover\\:text-gray-900:hover {
+  color: #111827;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.ms-auto {
+  margin-left: auto;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.dark\\:hover\\:bg-gray-600:hover {
+  background-color: #4b5563;
+}
+
+.dark\\:hover\\:text-white:hover {
+  color: white;
+}
+
+.m-3 {
+  margin: 0.75rem;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.text-gray-900 {
+  color: #1f2937;
+}
+
+.focus\\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-gray-200 {
+  border-color: #e5e7eb;
+}
+
+.hover\\:bg-gray-100:hover {
+  background-color: #f3f4f6;
+}
+
+.hover\\:text-blue-700:hover {
+  color: #1d4ed8;
+}
+
+.focus\\:z-10:focus {
+  z-index: 10;
+}
+
+.focus\\:ring-4:focus {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.focus\\:ring-gray-100:focus {
+  box-shadow: 0 0 0 4px rgba(243, 244, 246, 0.5);
+}
+
+.dark\\:focus\\:ring-gray-700:focus {
+  box-shadow: 0 0 0 4px rgba(75, 85, 99, 0.5);
+}
+
+.dark\\:bg-gray-800 {
+  background-color: #1f2937;
+}
+
+.dark\\:text-gray-400 {
+  color: #9ca3af;
+}
+
+.dark\\:border-gray-600 {
+  border-color: #4b5563;
+}
+
+.dark\\:hover\\:text-white:hover {
+  color: white;
+}
+
+.dark\\:hover\\:bg-gray-700:hover {
+  background-color: #374151;
+}

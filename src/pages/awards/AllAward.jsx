@@ -4,6 +4,7 @@ import award2 from "../../assets/award-2.jpg";
 import "./allawards.css";
 import MainNav from "../another/MainNav";
 import Faq from "../../components/faq/Faq";
+import Footer from "../../components/footer/Footer";
 
 const AllAward = () => {
   return (
@@ -59,6 +60,7 @@ const AllAward = () => {
         </motion.section>
       </AnimatePresence>
       <Faq />
+      <Footer />
     </div>
   );
 };

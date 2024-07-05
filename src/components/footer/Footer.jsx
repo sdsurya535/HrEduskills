@@ -10,22 +10,22 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="footer-main text-white mt-8">
+    <div className="footer-main text-white ">
       <div className="flex flex-col lg:flex-row lg:space-x-44  max-w-screen-xl mx-auto justify-between h-full items-center lg:items-start gap-8 lg:gap-0 p-4 lg:p-0">
         <div className="hrsummit-sec flex-1 text-center lg:text-left">
           <h4
             style={{ fontFamily: "Montserrat,sans-serif" }}
             className="text-[24px] font-bold"
           >
-            India HR Summit
+            EduSkills HR Summit
           </h4>
           <p
             style={{ fontFamily: "Karla,sans-serif" }}
             className="text-[18px] mt-5 leading-[30px] font-semibold"
           >
-            The HR Leadership Summit 2024 will explore how new work models,
-            organization structures, hybrid workplaces and emerging HR
-            technologies. Organized By Synnex Group.
+            The HR Summit organized by EduSkills in collaboration with AICTE and
+            the Ministry of Education, Government of India, is set to take place
+            in New Delhi on 28th September 2024.
           </p>
           <div className="social-icons flex justify-center lg:justify-start gap-4 mt-5">
             <a href="#">
@@ -70,8 +70,8 @@ const Footer = () => {
                 className="text-[18px] font-semibold"
                 style={{ fontFamily: "Karla,sans-serif" }}
               >
-                Sahar Plaza, 808, Windfall, Andheri – Kurla Rd, J B Nagar,
-                Andheri East, Mumbai, Maharashtra 400059
+                EduSkills Foundation #806, DLF Cyber City, Tech Park
+                Bhubaneswar, Odisha - 751024, India.
               </p>
             </div>
           </div>
@@ -146,13 +146,6 @@ const Footer = () => {
               href="#speaker"
             >
               Jury
-            </a>
-            <a
-              style={{ fontFamily: "Karla,sans-serif" }}
-              className="font-semibold"
-              href="#registration"
-            >
-              Register
             </a>
           </div>
         </div>
