@@ -46,9 +46,24 @@ const Navbar = () => {
           top: offsetTop2,
           behavior: "smooth",
         });
-      } else if (section.id === "registration") {
+      } else if (section.id === "faq") {
         window.scrollTo({
           top: offsetTop3,
+          behavior: "smooth",
+        });
+      } else if (section.id === "nominate") {
+        window.scrollTo({
+          top: offsetTop2,
+          behavior: "smooth",
+        });
+      } else if (section.id === "attend") {
+        window.scrollTo({
+          top: offsetTop2,
+          behavior: "smooth",
+        });
+      } else if (section.id === "process") {
+        window.scrollTo({
+          top: offsetTop2,
           behavior: "smooth",
         });
       }
@@ -182,9 +197,55 @@ const Navbar = () => {
                       Speakers
                     </a>
                   </li>
-                  <li >
-                    <NomBtn />
+                  <li>
+                    <Link
+                      href="#attend"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setMenu("attend");
+                        handleScrollToSection(e, "attend");
+                      }}
+                      className={`block ${
+                        menu === "attend" && "text-blue-700"
+                      } nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
+                    >
+                      Who Should Attend
+                    </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="#nominate"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setMenu("nominate");
+                        handleScrollToSection(e, "nominate");
+                      }}
+                      className={`block ${
+                        menu === "Who Can Nominate" && "text-blue-700"
+                      } nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
+                    >
+                      Who Can Nominate
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#process"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setMenu("process");
+                        handleScrollToSection(e, "process");
+                      }}
+                      className={`block ${
+                        menu === "about" && "text-blue-700"
+                      } nav-item py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
+                    >
+                      Process
+                    </Link>
+                  </li>
+
+                  {/* <li>
+                    <NomBtn />
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -198,7 +259,7 @@ const Navbar = () => {
               Welcome To
             </h1>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              Eduskills HR Summit & Awards 2024
+              EduSkills HR Summit & Awards 2024
             </h1>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
               28th September 2024
@@ -208,8 +269,13 @@ const Navbar = () => {
             </h2>
             <a
               style={{ fontFamily: "Roboto, sans-serif" }}
-              href="#registration"
-              onClick={handleNominateClick}
+              href="#faq"
+              onClick={(e) => {
+                e.preventDefault();
+                setMenu("faq");
+                handleScrollToSection(e, "faq");
+              }}
+              // onClick={handleNominateClick}
               className="mt-5 mb-48 hover:bg-[#3904f9] transition-all bg-[#3813C2] px-8 md:px-12 lg:px-16 py-3 md:py-4 text-base md:text-lg lg:text-xl font-bold btn-animate"
             >
               Nominate Now

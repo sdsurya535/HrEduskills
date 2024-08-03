@@ -1,16 +1,19 @@
 import { Outlet } from "react-router-dom";
 import SearchNav from "../../components/search/SearchNav";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Table from "../table/Table";
-import SidebarFooter from "../../components/sidebarfooter/SidebarFooter";
 
 const Admin = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <SearchNav />
-      <div className="flex ">
-        <Sidebar />
-        <Outlet />
+      <div className="flex flex-1">
+        {/* Sidebar: Hidden on smaller screens, visible on larger screens */}
+        <Sidebar className="hidden md:block w-64" />
+        
+        {/* Content: Takes full width on smaller screens, adjusts when Sidebar is visible */}
+        <div className="flex-1 p-4">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

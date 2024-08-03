@@ -17,30 +17,32 @@ const Footer2 = () => {
               <div className=" p-6 rounded-lg">
                 <div className="mb-5">
                   <div className="w-full text-center">
-                    <div className="flex flex-col md:flex-row justify-between">
+                    <div className="flex flex-col md:flex-row justify-center">
                       <div className="contact-text mx-2">
                         <p className="text-lg text-black">
-                          Bibek Ranjan (Asst. Director):{" "}
-                          <a href="tel:+918093254904" className="text-blue-500">
-                            +91-8093254904
+                          Dr. Satya Ranjan Biswal(COO EduSkills):{" "}
+                          <a href="tel:+918093254901" className="text-blue-500">
+                            +91-8093254901
                           </a>
                         </p>
                       </div>
-                      <div className="contact-text mx-2">
+                      {/* <div className="contact-text mx-2">
                         <p className="text-lg text-black">
                           Pritipragyan (Sr. Relationship Manager):{" "}
                           <a href="tel:+918093254905" className="text-blue-500">
                             +91-8093254905
                           </a>
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
                 <div className="w-full text-center">
                   <div className=" p-4 rounded-lg">
                     <div className="icon flex items-center justify-center">
-                      <span className="text-white bg-gray-800 px-5 rounded-md py-2">E-Mail</span>
+                      <span className="text-white bg-gray-800 px-5 rounded-md py-2">
+                        E-Mail
+                      </span>
                     </div>
                     <div className="flex justify-center">
                       <div className="contact-text mx-2">

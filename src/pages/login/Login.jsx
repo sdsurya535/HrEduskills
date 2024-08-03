@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+//import axios from "axios";
+import api from "../../utils/axios";
+import { loginUser, logout } from "../../redux/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import logo from "../../assets/logo.png";
+//import ThemeToggle from "../../components/ThemeToggle";
+import { ToastContainer, toast } from "react-toastify";
+//import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,8 +19,16 @@ const Login = () => {
   const [timer, setTimer] = useState(0);
   const [attempts, setAttempts] = useState(0);
   const [resendEnabled, setResendEnabled] = useState(false);
+  const dispatch = useDispatch();
+  const { token, logout } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      navigate("/hrsummit/admin/table");
+    }
+  }, [token]);
 
   useEffect(() => {
     let interval;
@@ -26,6 +42,20 @@ const Login = () => {
     }
     return () => clearInterval(interval);
   }, [timer, otpSent]);
+
+  useEffect(() => {
+    if (logout) {
+      toast.error("Logout Successfully");
+    }
+  }, [logout]);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${
+      remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds
+    }`;
+  };
 
   const resetState = () => {
     setEmail("");
@@ -49,7 +79,7 @@ const Login = () => {
     if (!validateEmail(e.target.value)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        email: "Invalid email format",
+        email: "Please enter a valid email",
       }));
     } else {
       setErrors((prevErrors) => ({ ...prevErrors, email: "" }));
@@ -68,38 +98,44 @@ const Login = () => {
     }
   };
 
-  const handleEmailSubmit = (e) => {
+  const handleEmailSubmit = async (e) => {
     e.preventDefault();
     if (!validateEmail(email)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        email: "Invalid email format",
+        email: "Please enter a valid email",
       }));
       return;
     }
 
-    sendOtp();
-  };
-
-  const sendOtp = () => {
-    setLoading(true);
-    setAlert({ type: "", message: "" });
-
-    // Simulate API call to send OTP
-    setTimeout(() => {
+    try {
+      setLoading(true);
+      setAlert({ type: "", message: "" });
+      console.log("first");
+      const response = await api.post("/auth/signin", {
+        email,
+        opType: "SEND_OTP",
+      });
+      console.log(email, otp);
       setLoading(false);
-      if (email === "test@example.com") {
+      console.log(response);
+      if (response.data.status === true) {
         setOtpSent(true);
-        setAlert({ type: "success", message: "OTP sent successfully!" });
-        setTimer(60); // Set timer for 1 minute
+        setAlert({ type: "success", message: response.data.message });
+        setTimer(300); // Set timer for 5 minutes (300 seconds)
         setResendEnabled(false);
       } else {
-        setAlert({ type: "error", message: "Failed to send OTP. Try again." });
+        console.log(response);
+        setAlert({ type: "error", message: response.data.message });
       }
-    }, 2000);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      setAlert({ type: "error", message: "Failed to send OTP. Try again." });
+    }
   };
 
-  const handleOtpSubmit = (e) => {
+  const handleOtpSubmit = async (e) => {
     e.preventDefault();
     if (otp.length !== 6) {
       setErrors((prevErrors) => ({
@@ -109,17 +145,25 @@ const Login = () => {
       return;
     }
 
-    setLoading(true);
-    setAlert({ type: "", message: "" });
+    try {
+      setLoading(true);
+      setAlert({ type: "", message: "" });
 
-    // Simulate API call to verify OTP
-    setTimeout(() => {
+      const response = await api.post("/auth/signin", {
+        email,
+        otp,
+        opType: "VERIFY_OTP",
+      });
+
       setLoading(false);
-      if (otp === "123456") {
-        // Assume '123456' is the correct OTP for demonstration
-        setAlert({ type: "success", message: "OTP verified successfully!" });
-        navigate("/admin/table"); // Redirect to /admin/table on successful OTP verification
+      if (response.data) {
+        setAlert({
+          type: "success",
+          message: response.data.message,
+        });
+        dispatch(loginUser({ email, otp }));
       } else {
+        console.log(response.data);
         setAttempts((prevAttempts) => {
           if (prevAttempts + 1 >= 4) {
             resetState();
@@ -127,19 +171,52 @@ const Login = () => {
           }
           return prevAttempts + 1;
         });
+
         setAlert({ type: "error", message: "Invalid OTP. Try again." });
       }
-    }, 2000);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      setAlert({ type: "error", message: "Failed to verify OTP. Try again." });
+    }
   };
 
-  const handleResendOtp = () => {
-    sendOtp();
+  const handleResendOtp = async () => {
+    try {
+      setLoading(true);
+      setAlert({ type: "", message: "" });
+
+      const response = await api.post("auth/login", {
+        email,
+        opType: "RESEND_OTP",
+      });
+
+      setLoading(false);
+      if (response.data.status === true) {
+        setOtpSent(true);
+        setAlert({ type: "success", message: "OTP resent successfully!" });
+        setTimer(300); // Set timer for 5 minutes (300 seconds)
+        setResendEnabled(false);
+      } else {
+        setAlert({
+          type: "error",
+          message: "Failed to resend OTP. Try again.",
+        });
+      }
+    } catch (error) {
+      setLoading(false);
+      setAlert({ type: "error", message: "Failed to resend OTP. Try again." });
+    }
   };
 
   return (
     <div>
+      <ToastContainer />
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <div>
+            <img src={logo} className="w-[18rem] mx-auto pb-10" alt="" />
+          </div>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -199,7 +276,7 @@ const Login = () => {
                     )}
                     {timer > 0 && (
                       <p className="mt-2 text-sm text-gray-600">
-                        OTP valid for {timer} seconds
+                        OTP valid for {formatTime(timer)} seconds
                       </p>
                     )}
                     {resendEnabled && (
@@ -215,7 +292,7 @@ const Login = () => {
                 )}
                 <button
                   type="submit"
-                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   disabled={loading}
                 >
                   {loading
@@ -224,6 +301,14 @@ const Login = () => {
                     ? "Submit OTP"
                     : "GET OTP"}
                 </button>
+                <a
+                  href={""}
+                  className={`w-full ${
+                    !otpSent ? "hidden" : "inline-block"
+                  } text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800`}
+                >
+                  {otpSent && "CANCEL"}
+                </a>
               </form>
               {alert.message && (
                 <div
