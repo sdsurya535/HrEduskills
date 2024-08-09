@@ -9,6 +9,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 
 import award from "../../assets/award-2.jpg";
 import Swal from "sweetalert2";
+import api from "../../utils/axios";
 
 export default function Register() {
   const [isChecked, setIsChecked] = useState(false);
@@ -100,7 +101,7 @@ export default function Register() {
     console.log(data);
 
     try {
-      await axios.post(import.meta.env.VITE_API_URL, formData, {
+      await api.post("/auth/register", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -128,14 +129,14 @@ export default function Register() {
         confirmButtonColor: "#3085d6",
         timer: 10000,
         timerProgressBar: true,
-        // didClose: () => {
-        //   // Navigate to a specific URL when the timer ends
-        //   window.location.href = "https://connect.eduskillsfoundation.org";
-        // },
-        // preConfirm: () => {
-        //   // Navigate to a specific URL when the button is clicked
-        //   window.location.href = "https://connect.eduskillsfoundation.org";
-        // },
+        didClose: () => {
+          // Navigate to a specific URL when the timer ends
+          window.location.href = "https://connect.eduskillsfoundation.org";
+        },
+        preConfirm: () => {
+          // Navigate to a specific URL when the button is clicked
+          window.location.href = "https://connect.eduskillsfoundation.org";
+        },
       });
     } catch (error) {
       console.error("There was an error!", error);
@@ -299,7 +300,7 @@ export default function Register() {
                     htmlFor="designation"
                     className="text-base font-medium text-gray-900"
                   >
-                    Applicant Name
+                    Your Name
                   </label>
                 </div>
                 <div className="mt-2">
@@ -326,7 +327,7 @@ export default function Register() {
                     htmlFor="designation"
                     className="text-base font-medium text-gray-900"
                   >
-                    Applicant Email
+                    Your Email
                   </label>
                 </div>
                 <div className="mt-2">
@@ -533,12 +534,33 @@ export default function Register() {
                         acceptedFormats: (files) => {
                           const validFormats = [
                             "application/zip",
+                            "application/x-zip-compressed",
                             "application/pdf",
                           ];
+                          const validExtensions = [
+                            ".zip",
+                            ".pdf",
+                            ".zipx",
+                            ".tar",
+                            ".tar.gz",
+                            ".tar.bz2",
+                            ".7z",
+                            ".rar",
+                          ];
+
+                          const isValid = Array.from(files).every((file) => {
+                            const fileExtension = file.name
+                              .split(".")
+                              .pop()
+                              .toLowerCase();
+                            return (
+                              validFormats.includes(file.type) ||
+                              validExtensions.includes(`.${fileExtension}`)
+                            );
+                          });
+
                           return (
-                            Array.from(files).every((file) =>
-                              validFormats.includes(file.type)
-                            ) || "Only zip and pdf files are allowed"
+                            isValid || "Only zip and pdf files are allowed"
                           );
                         },
                       },
@@ -549,6 +571,7 @@ export default function Register() {
                         : "border-gray-300"
                     } rounded-md cursor-pointer bg-gray-50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   />
+
                   {errors[`files_${index}`] && (
                     <p className="mt-2 text-sm text-red-500">
                       {errors[`files_${index}`]?.message}

@@ -4,20 +4,13 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/authSlice";
 
-export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Sidebar({ toggleSidebar, isOpen }) {
   const dispatch = useDispatch();
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <div className="relative">
       {/* Toggle button for all screen sizes */}
-      <button onClick={toggleSidebar} className="absolute top-4 left-4 z-20">
-        <Menu className="h-6 w-6 text-black" />
-      </button>
+      
 
       {/* Overlay for when sidebar is open */}
       {isOpen && (
@@ -44,14 +37,14 @@ export default function Sidebar() {
                 <BarChart className="h-5 w-5" aria-hidden="true" />
                 <span className="mx-2 text-lg font-medium">Dashboard</span>
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 className="flex items-center rounded-lg px-3 py-2 text-white transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700"
-                to="/admin/files"
+                to="files"
                 onClick={toggleSidebar} // Close sidebar on navigation
               >
                 <BarChart className="h-5 w-5" aria-hidden="true" />
                 <span className="mx-2 text-lg font-medium">Files</span>
-              </NavLink>
+              </NavLink> */}
               <button
                 onClick={() => {
                   dispatch(logout());

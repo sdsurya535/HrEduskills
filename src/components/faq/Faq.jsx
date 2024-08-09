@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import api from "../../utils/axios";
 
 const SkeletonLoader = () => (
   <div className="w-full mb-4 p-4 bg-gray-200 animate-pulse">
@@ -21,8 +22,8 @@ const Faq = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("https://connectapi.eduskillsfoundation.org/api/auth/getAward")
+    api
+      .get("/auth/getAward")
       .then((response) => {
         setAccordionDataLeft(response.data.leftdata);
         setAccordionDataRight(response.data.rightdata);
