@@ -22,7 +22,7 @@ import store from "./redux/store";
 import ProtectedRoute from "./utils/ProtectedRoute";
 
 const routes = (
-  <Routes basename={"/hrsummit"}>
+  // <Routes basename={"/hrsummit"}>
     <Route path="/hrsummit" element={<App />}>
       <Route index element={<AllTab />} />
       <Route path="awards" element={<AllAward />} />
@@ -41,7 +41,7 @@ const routes = (
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Route>
-  </Routes>
+  // </Routes>
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
